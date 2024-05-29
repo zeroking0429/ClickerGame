@@ -84,7 +84,7 @@ export default function CreateAccount() {
       })
       navigate("/");
     } catch (e) {
-      
+      setError("error");
     } finally {
       setLoading(false);
     }
