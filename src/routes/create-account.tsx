@@ -82,7 +82,7 @@ export default function CreateAccount() {
       await updateProfile(credentials.user, {
         displayName: name,
       })
-      navigate("/");
+      navigate("/main");
     } catch (e) {
       setError("error");
     } finally {
