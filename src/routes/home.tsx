@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,18 +35,52 @@ const Button = styled.button`
     cursor: pointer;
     color: black;
     background-color: white;
-    font-size: 3.75em;
+    font-size: 3.5em;
   }
 `
 
 export default function Home() {
+  const user = auth.currentUser;
+  const navigate = useNavigate();
+
+  function onLogin() {
+    navigate("/login");
+  }
+
+  function onSignIn() {
+    navigate("/create-account");
+  }
+
+  function onPlay() {
+    navigate("/main");
+  }
+
+  const onLogOut = async () => {
+    const ok = confirm("Are you sure you want to log out?");
+    if (ok) {
+      await auth.signOut();
+      navigate("/login");
+    }
+  };
+  
   return (
+    
     <Wrapper>
-      <Div>
-        <Title>Clickers Land</Title><br />
-        <Button>Login</Button>
-        <Button>Sign in</Button>
-      </Div>
+      {
+        user === null 
+        ? 
+          <Div>
+            <Title>Clickers Land</Title><br />
+            <Button onClick={onLogin}>Login</Button>
+            <Button onClick={onSignIn}>Sign in</Button>
+          </Div>
+        : 
+          <Div>
+            <Title>Clickers Land</Title><br />
+            <Button onClick={onPlay}>Play</Button>
+            <Button onClick={onLogOut}>Log Out</Button>
+          </Div>
+      }
     </Wrapper>
   );
 }
