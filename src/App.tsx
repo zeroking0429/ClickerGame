@@ -60,8 +60,6 @@ const GlobalStyles = createGlobalStyle`
 
 const Wrapper = styled.div`
   height: 10vh;
-  display: flex;
-  justify-content: center;
 `;
 
 function App() {

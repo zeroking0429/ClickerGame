@@ -7,9 +7,10 @@ import {
   Input, 
   Logo, 
   Title, 
-  Wrapper, 
+  FormWrapper, 
   Error, 
-  Switcher
+  Switcher,
+  Wrapper
 } from "../components/auth-components"
 
 export default function CreateAccount() {
@@ -48,19 +49,21 @@ export default function CreateAccount() {
 
   return (
     <Wrapper>
-      <Logo src="/logo.png" /><br />
-      <Title>Join</Title>
-      <Form onSubmit={onSubmit}>
-        <Input onChange={onChange} name="name" value={name} placeholder="Name" type="text" required />
-        <Input onChange={onChange} name="email" value={email} placeholder="Email" type="email" required />
-        <Input onChange={onChange} name="password" value={password} placeholder="Password" type="password" required />
-        <Input onChange={onChange} type="submit" value={isLoading ? "Loading..." : "Create Account"} />
-      </Form>
-      {error !== "" ? <Error>{error}</Error> : null}
-      <Switcher>
-        Already have an account?{" "}
-        <Link to="/Login">Login &rarr;</Link>
-      </Switcher>
+      <FormWrapper>
+        <Logo src="/logo.png" /><br />
+        <Title>Join</Title>
+        <Form onSubmit={onSubmit}>
+          <Input onChange={onChange} name="name" value={name} placeholder="Name" type="text" required />
+          <Input onChange={onChange} name="email" value={email} placeholder="Email" type="email" required />
+          <Input onChange={onChange} name="password" value={password} placeholder="Password" type="password" required />
+          <Input onChange={onChange} type="submit" value={isLoading ? "Loading..." : "Create Account"} />
+        </Form>
+        {error !== "" ? <Error>{error}</Error> : null}
+        <Switcher>
+          Already have an account?{" "}
+          <Link to="/Login">Login &rarr;</Link>
+        </Switcher>
+      </FormWrapper>
     </Wrapper>
   );
 }

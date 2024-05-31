@@ -8,9 +8,10 @@ import {
   Input, 
   Switcher, 
   Title, 
-  Wrapper, 
+  FormWrapper, 
   Error, 
-  Logo
+  Logo,
+  Wrapper
 } from "../components/auth-components";
 
 export default function Login() {
@@ -48,35 +49,37 @@ const onSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
 };
   return (
     <Wrapper>
-      <Logo src="/logo.png" /><br />
-      <Title>Log in</Title>
-      <Form onSubmit={onSubmit}>
-        <Input
-            onChange={onChange}
-            name="email"
-            value={email}
-            placeholder="Email"
-            type="email"
-            required
-        />
-        <Input
-            onChange={onChange}
-            name="password"
-            value={password}
-            placeholder="Password"
-            type="password"
-            required
-        />
-        <Input
-            type="submit"
-            value={isLoading ? "Loading..." : "Log in"}
-        />
-      </Form>
-      {error !== "" ? <Error>{error}</Error> : null}
-      <Switcher>
-        Don't you have an account?{" "}
-        <Link to="/create-account">Create One &rarr;</Link>
-      </Switcher>
+      <FormWrapper>
+        <Logo src="/logo.png" /><br />
+        <Title>Log in</Title>
+        <Form onSubmit={onSubmit}>
+          <Input
+              onChange={onChange}
+              name="email"
+              value={email}
+              placeholder="Email"
+              type="email"
+              required
+          />
+          <Input
+              onChange={onChange}
+              name="password"
+              value={password}
+              placeholder="Password"
+              type="password"
+              required
+          />
+          <Input
+              type="submit"
+              value={isLoading ? "Loading..." : "Log in"}
+          />
+        </Form>
+        {error !== "" ? <Error>{error}</Error> : null}
+        <Switcher>
+          Don't you have an account?{" "}
+          <Link to="/create-account">Create One &rarr;</Link>
+        </Switcher>
+      </FormWrapper>
     </Wrapper>
   );
 }
