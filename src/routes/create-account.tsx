@@ -1,60 +1,15 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
-import styled from "styled-components";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-
-const Wrapper = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 420px;
-  padding: 50px 0;
-`;
-
-const Title = styled.h1`
-  font-size: 42px;
-`;
-
-const Logo = styled.img`
-  border: 2px solid white;
-  border-radius: 50px;
-  width: 75px;
-  height: 75px;
-`;
-
-const Form = styled.form`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-`;
-
-const Input = styled.input`
-  padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border-radius: 50px;
-  border: 2px solid white;
-  width: 100%;
-  font-size: 16px;
-  &[type="submit"] {
-    cursor: pointer;
-    transition-duration: 0.3s;
-    &:hover {
-      transition-duration: 0.5s;
-      color: black;
-      background-color: white;
-    }
-  }
-`;
-
-const Error = styled.span`
-  font-weight: 600;
-  color: red;
-`;
+import {
+  Form,
+  Input, 
+  Logo, 
+  Title, 
+  Wrapper, 
+  Error 
+} from "../components/authComponents"
 
 export default function CreateAccount() {
   const navigate = useNavigate();
@@ -82,7 +37,7 @@ export default function CreateAccount() {
       await updateProfile(credentials.user, {
         displayName: name,
       })
-      navigate("/main");
+      navigate("/");
     } catch (e) {
       setError("error");
     } finally {
