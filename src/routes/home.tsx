@@ -59,7 +59,7 @@ export default function Home() {
     const ok = confirm("Are you sure you want to log out?");
     if (ok) {
       await auth.signOut();
-      navigate("/home");
+      navigate("/");
     }
   };
   
