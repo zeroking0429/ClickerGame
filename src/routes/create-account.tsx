@@ -1,14 +1,15 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Form,
   Input, 
   Logo, 
   Title, 
   Wrapper, 
-  Error 
+  Error, 
+  Switcher
 } from "../components/authComponents"
 
 export default function CreateAccount() {
@@ -56,6 +57,10 @@ export default function CreateAccount() {
         <Input onChange={onChange} type="submit" value={isLoading ? "Loading..." : "Create Account"} />
       </Form>
       {error !== "" ? <Error>{error}</Error> : null}
+      <Switcher>
+        Already have an account?{" "}
+        <Link to="/Login">Login &rarr;</Link>
+      </Switcher>
     </Wrapper>
   );
 }
