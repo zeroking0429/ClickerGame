@@ -11,7 +11,7 @@ import {
   Wrapper, 
   Error, 
   Logo
-} from "../components/authComponents";
+} from "../components/auth-components";
 
 export default function Login() {
   const navigate = useNavigate();

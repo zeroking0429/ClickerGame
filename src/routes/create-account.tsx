@@ -10,7 +10,7 @@ import {
   Wrapper, 
   Error, 
   Switcher
-} from "../components/authComponents"
+} from "../components/auth-components"
 
 export default function CreateAccount() {
   const navigate = useNavigate();
